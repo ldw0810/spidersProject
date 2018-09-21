@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="shortcut icon" href="/favicon.png">
+  <title>Evolution Land</title>
+  <script>var ua = navigator.userAgent, isMobile = !!ua.match(/AppleWebKit.*Mobile.*/),
+    $viewport = document.querySelector("meta[name=viewport]");
+  if (isMobile) {
+    var WIDTH = 750, PHONE_SCALE = parseInt(window.screen.width) / WIDTH, $head = document.querySelector("head");
+    if (/Android (\d+\.\d+)/.test(ua)) {
+      var version = parseFloat(RegExp.$1);
+      2.3 < version ? $viewport.setAttribute("content", "width=" + WIDTH + ", minimum-scale=" + PHONE_SCALE + ", maximum-scale=" + PHONE_SCALE) : $viewport.setAttribute("content", "width=" + WIDTH)
+    } else $viewport.setAttribute("content", "width=" + WIDTH + ", user-scalable=no")
+  }</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122233102-1"></script>
+  <script>function gtag() {
+    dataLayer.push(arguments)
+  }
+
+  window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "UA-122233102-1")</script>
+  <link href="/static/css/main.b650eb0e.css" rel="stylesheet">
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script type="text/javascript" src="/static/js/manifest.ceb4701f.js"></script>
+<script type="text/javascript" src="/static/js/vendor.7bf5fc1b.js"></script>
+<script type="text/javascript" src="/static/js/main.fae4945d.js"></script>
+</body>
+</html>

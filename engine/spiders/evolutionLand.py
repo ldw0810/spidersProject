@@ -13,7 +13,6 @@ class EvolutionLandSpider(scrapy.Spider):
     start_urls = ['https://www.evolution.land/']
 
     def parse(self, response):
-        reStr = re.compile(/^$/)
-        response_body = re.search(response.body)
+        print response.body
+        response_body = re.findall(r'(?<=<body>).*?(?=</body>)', response.body)
         print(response_body)
-        print(type(r))
