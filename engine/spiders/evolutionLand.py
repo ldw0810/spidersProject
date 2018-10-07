@@ -2,6 +2,7 @@
 import scrapy
 import re
 
+
 class EvolutionLandSpider(scrapy.Spider):
     name = 'evolutionLand'
     custom_settings = {
