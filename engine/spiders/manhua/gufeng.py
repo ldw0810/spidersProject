@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*-
+import re
 import scrapy
-import sys
-
+from datetime import datetime
 from scrapy.http.request import Request
 
 from engine.items import GufengItem
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 class GufengSpider(scrapy.Spider):
     name = 'gufeng'
+    custom_settings = {
+        "DOWNLOADER_MIDDLEWARES": {
+            'engine.middlewares.GufengMiddleware': 500,
+        },
+        "ITEM_PIPELINES": {
+           'engine.pipelines.GufengPipeline': 500,
+        }
+    }
     allowed_domains = ['www.gufengmh.com']
     start_urls = ['http://www.gufengmh.com/list/click/?page=1']
     num = 0
@@ -20,11 +25,14 @@ class GufengSpider(scrapy.Spider):
         manhuaList = response.xpath('//li[@class="item-lg"]')
         for manhua in manhuaList:
             item = GufengItem()
+            time_str = re.search(r'\d{4}-\d{2}-\d{2}',
+                                 manhua.xpath('./span[@class="updateon"]/text()').extract_first()).group(0)
+            item['id'] = int(manhua.xpath('./@data-key').extract_first())
             item['name'] = manhua.xpath('./a/@title').extract_first()
             item['link'] = manhua.xpath('./a/@href').extract_first()
             item['cover'] = manhua.xpath('./a/img/@src').extract_first()
             item['update_desc'] = manhua.xpath('./a/span[@class="tt"]/text()').extract_first()
-            item['update_time'] = manhua.xpath('./span[@class="updateon"]/text()').extract_first().strip()
+            item['update_time'] = datetime.strptime(time_str, '%Y-%m-%d')
             yield item
 
     def parse(self, response):

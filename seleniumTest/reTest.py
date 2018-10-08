@@ -1157,7 +1157,4 @@ print htmlStr
 print re.findall(r'(?<=<li class="item-lg").*?(?=li)', htmlStr, re.M)
 
 if __name__ == '__main__':
-    a = u'\u51e4\u9006\u5929\u4e0b    '
-    print a.strip()
-    for i in range(10):
-        print i
+    print re.search(r'\d{4}-\d{2}-\d{2}', htmlStr).group(0)

@@ -9,3 +9,12 @@
 class SpidersprojectPipeline(object):
     def process_item(self, item, spider):
         return item
+
+
+class GufengPipeline(object):
+    def process_item(self, item, spider):
+        self.insert_db(item)
+        return item
+
+    def insert_db(self, item):
+        pass
