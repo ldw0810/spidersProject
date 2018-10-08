@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import re
+
+htmlStr = '''
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -1147,3 +1152,12 @@ var siteUrl = "http://www.gufengmh.com";</script>
 });</script>
 </body>
 </html>
+'''
+print htmlStr
+print re.findall(r'(?<=<li class="item-lg").*?(?=li)', htmlStr, re.M)
+
+if __name__ == '__main__':
+    a = u'\u51e4\u9006\u5929\u4e0b    '
+    print a.strip()
+    for i in range(10):
+        print i

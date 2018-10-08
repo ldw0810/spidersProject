@@ -12,7 +12,7 @@ schedule = sched.scheduler(time.time, time.sleep)
 
 # 被周期性调度触发的函数
 def func():
-    os.system("scrapy crawl evolutionLand")
+    os.system("scrapy crawl gufeng")
 
 
 def perform(inc):
