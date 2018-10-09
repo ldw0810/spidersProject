@@ -32,7 +32,7 @@ class GufengDao:
 
 
 if __name__ == "__main__":
-    gufengData = GufengTable(id=1, name="123", cover="234", link="345", update_desc="456")
+    gufengData = GufengTable(id=3, name="123", cover="234", link="345", update_desc="456")
     print GufengDao.add(gufengData)
     # queryData = GufengDao.queryByPage()
     # print queryData

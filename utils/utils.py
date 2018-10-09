@@ -40,19 +40,20 @@ class AlchemyJsonEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-class ConfigParserCustomer(ConfigParser.ConfigParser):
-    def __init__(self, defaults=None):
+class ConfigParserCustomer:
+    def __init__(self):
         setting_filename = "config"
         profile = ""
-        ConfigParser.ConfigParser.__init__(self, defaults=defaults)
+        self.cf = ConfigParser.ConfigParser()
         filename = "%s%s.ini" % (setting_filename, profile)
+        # path = os.path.abspath(os.path.dirname(os.getcwd()))
         path = os.path.dirname(os.path.abspath(__file__))
         # path= os.path.abspath(FileName)
-        self.read(path + "/" + filename)
+        self.cf.read(path + "/" + filename)
 
     def optionxform(self, option_str):
         return option_str
 
-    def getProperty(self, glo, name, default=""):
-        value = self.get(glo, name)
+    def getProperty(self, section, name, default=""):
+        value = self.cf.get(section, name)
         return default if value is None else value
